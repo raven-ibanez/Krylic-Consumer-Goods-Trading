@@ -23,12 +23,27 @@ function MainApp() {
 
   const handleCategoryClick = (categoryId: string) => {
     setSelectedCategory(categoryId);
+    // Scroll to the category section when a category is selected
+    if (categoryId !== 'all') {
+      setTimeout(() => {
+        const element = document.getElementById(categoryId);
+        if (element) {
+          const headerHeight = 64; // Header height
+          const subNavHeight = 60; // SubNav height
+          const offset = headerHeight + subNavHeight + 20;
+          const elementPosition = element.offsetTop - offset;
+          
+          window.scrollTo({
+            top: elementPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    }
   };
 
-  // Filter menu items based on selected category
-  const filteredMenuItems = selectedCategory === 'all' 
-    ? menuItems 
-    : menuItems.filter(item => item.category === selectedCategory);
+  // Don't filter menu items here - let Menu component handle its own filtering
+  // The SubNav is just for navigation, Menu component shows all items organized by category
 
   return (
     <div className="min-h-screen bg-krylic-light-yellow font-krylic-serif">
@@ -43,7 +58,7 @@ function MainApp() {
         <>
           <Hero />
           <Menu 
-            menuItems={filteredMenuItems}
+            menuItems={menuItems}
             addToCart={cart.addToCart}
             cartItems={cart.cartItems}
             updateQuantity={cart.updateQuantity}

@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import { Plus, Edit, Trash2, Save, X, ArrowLeft, Coffee, TrendingUp, Package, Users, Lock, FolderOpen, CreditCard, Settings } from 'lucide-react';
 import { MenuItem, Variation, AddOn } from '../types';
-import { addOnCategories } from '../data/menuData';
+// Add-on categories for admin dashboard
+const addOnCategories = [
+  { id: 'spice', name: 'Spice Level' },
+  { id: 'protein', name: 'Extra Protein' },
+  { id: 'sauce', name: 'Sauces' },
+  { id: 'extras', name: 'Extras' }
+];
 import { useMenu } from '../hooks/useMenu';
-import { useCategories, Category } from '../hooks/useCategories';
+import { useCategories } from '../hooks/useCategories';
 import ImageUpload from './ImageUpload';
 import CategoryManager from './CategoryManager';
 import PaymentMethodManager from './PaymentMethodManager';
@@ -232,7 +238,7 @@ const AdminDashboard: React.FC = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === 'ClickEats@Admin!2025') {
+    if (password === 'Krylics@Admin!2025') {
       setIsAuthenticated(true);
       localStorage.setItem('beracah_admin_auth', 'true');
       setLoginError('');

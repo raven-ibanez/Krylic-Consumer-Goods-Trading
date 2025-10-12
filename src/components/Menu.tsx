@@ -23,73 +23,22 @@ interface MenuProps {
 
 const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems, updateQuantity }) => {
   const { categories } = useCategories();
-  const [activeCategory, setActiveCategory] = React.useState('shoe-cleaning');
 
   // Preload images when menu items change
   React.useEffect(() => {
     if (menuItems.length > 0) {
-      // Preload images for visible category first
-      const visibleItems = menuItems.filter(item => item.category === activeCategory);
-      preloadImages(visibleItems);
-      
-      // Then preload other images after a short delay
-      setTimeout(() => {
-        const otherItems = menuItems.filter(item => item.category !== activeCategory);
-        preloadImages(otherItems);
-      }, 1000);
+      // Preload all images for better performance
+      preloadImages(menuItems);
     }
-  }, [menuItems, activeCategory]);
+  }, [menuItems]);
 
-  const handleCategoryClick = (categoryId: string) => {
-    setActiveCategory(categoryId);
-    const element = document.getElementById(categoryId);
-    if (element) {
-      const headerHeight = 64; // Header height
-      const mobileNavHeight = 60; // Mobile nav height
-      const offset = headerHeight + mobileNavHeight + 20; // Extra padding
-      const elementPosition = element.offsetTop - offset;
-      
-      window.scrollTo({
-        top: elementPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  React.useEffect(() => {
-    if (categories.length > 0) {
-      // Set default to shoe-cleaning if it exists, otherwise first category
-      const defaultCategory = categories.find(cat => cat.id === 'shoe-cleaning') || categories[0];
-      if (!categories.find(cat => cat.id === activeCategory)) {
-        setActiveCategory(defaultCategory.id);
-      }
-    }
-  }, [categories, activeCategory]);
-
-  React.useEffect(() => {
-    const handleScroll = () => {
-      const sections = categories.map(cat => document.getElementById(cat.id)).filter(Boolean);
-      const scrollPosition = window.scrollY + 200;
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveCategory(categories[i].id);
-          break;
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
 
   return (
     <>
       <MobileNav 
-        activeCategory={activeCategory}
-        onCategoryClick={handleCategoryClick}
+        activeCategory="all"
+        onCategoryClick={() => {}}
       />
       <main className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-8 sm:py-12">
       <div className="text-center mb-8 sm:mb-12">
