@@ -1,0 +1,23 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Simplified wave graphic from Krylic logo -->
+  <defs>
+    <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9CA3AF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4B5563;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Upper wave (light grey) -->
+  <path d="M4 16 C8 8, 12 8, 16 16 C20 24, 24 24, 28 16" 
+        stroke="url(#waveGradient)" 
+        stroke-width="3" 
+        fill="none" 
+        stroke-linecap="round"/>
+  
+  <!-- Lower wave (darker) -->
+  <path d="M4 20 C8 12, 12 12, 16 20 C20 28, 24 28, 28 20" 
+        stroke="#374151" 
+        stroke-width="2.5" 
+        fill="none" 
+        stroke-linecap="round"/>
+</svg>
