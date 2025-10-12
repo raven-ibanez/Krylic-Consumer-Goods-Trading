@@ -13,49 +13,49 @@ const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick, onMenuClic
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-krylic-light-yellow backdrop-blur-sm border-b border-krylic-beige shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-18">
           <button 
             onClick={onMenuClick}
-            className="flex items-center space-x-3 text-krylic-charcoal hover:text-krylic-muted-blue transition-colors duration-200 group"
+            className="flex items-center space-x-2 sm:space-x-3 text-krylic-charcoal hover:text-krylic-muted-blue transition-colors duration-200 group flex-1 min-w-0"
           >
             {loading ? (
-              <div className="w-12 h-12 bg-krylic-beige rounded-full animate-pulse" />
+              <div className="w-8 h-8 sm:w-12 sm:h-12 bg-krylic-beige rounded-full animate-pulse flex-shrink-0" />
             ) : (
-              <div className="relative">
+              <div className="relative flex-shrink-0">
                 <img 
                   src={siteSettings?.site_logo || "/logo.jpg"} 
                   alt={siteSettings?.site_name || "Krylic"}
-                  className="w-12 h-12 rounded-full object-cover ring-2 ring-krylic-beige group-hover:ring-krylic-accent transition-all duration-300"
+                  className="w-8 h-8 sm:w-12 sm:h-12 rounded-full object-cover ring-2 ring-krylic-beige group-hover:ring-krylic-accent transition-all duration-300"
                   onError={(e) => {
                     e.currentTarget.src = "/logo.jpg";
                   }}
                 />
-                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-krylic-beige rounded-full border-2 border-krylic-light-yellow"></div>
+                <div className="absolute -bottom-1 -right-1 w-3 h-3 sm:w-4 sm:h-4 bg-krylic-beige rounded-full border-2 border-krylic-light-yellow"></div>
               </div>
             )}
-            <div className="flex flex-col items-start">
-              <h1 className="text-3xl font-krylic-elegant font-semibold tracking-wide">
+            <div className="flex flex-col items-start min-w-0 flex-1">
+              <h1 className="text-lg sm:text-2xl lg:text-3xl font-krylic-elegant font-semibold tracking-wide truncate">
                 {loading ? (
-                  <div className="w-28 h-8 bg-krylic-beige rounded animate-pulse" />
+                  <div className="w-20 h-4 sm:w-28 sm:h-6 lg:h-8 bg-krylic-beige rounded animate-pulse" />
                 ) : (
-                  <span className="krylic-underline">Krylic Consumer Goods Trading </span>
+                  <span className="krylic-underline">Krylic</span>
                 )}
               </h1>
-              <p className="text-xs font-krylic-serif italic text-krylic-muted-blue -mt-1">
-                Ad Majorem Dei Gloriam
+              <p className="text-xs sm:text-sm lg:text-base font-krylic-serif italic text-krylic-muted-blue truncate">
+                Consumer Goods Trading
               </p>
             </div>
           </button>
 
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-1 sm:space-x-2 flex-shrink-0">
             <button 
               onClick={onCartClick}
-              className="relative p-3 text-krylic-muted-blue hover:text-krylic-charcoal hover:bg-krylic-yellow rounded-full transition-all duration-200 group"
+              className="relative p-2 sm:p-3 text-krylic-muted-blue hover:text-krylic-charcoal hover:bg-krylic-yellow rounded-full transition-all duration-200 group"
             >
-              <ShoppingCart className="h-6 w-6 group-hover:scale-110 transition-transform duration-200" />
+              <ShoppingCart className="h-5 w-5 sm:h-6 sm:w-6 group-hover:scale-110 transition-transform duration-200" />
               {cartItemsCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-krylic-accent text-white text-xs rounded-full h-5 w-5 flex items-center justify-center animate-bounce-gentle font-medium">
+                <span className="absolute -top-1 -right-1 bg-krylic-accent text-white text-xs rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center animate-bounce-gentle font-medium">
                   {cartItemsCount}
                 </span>
               )}

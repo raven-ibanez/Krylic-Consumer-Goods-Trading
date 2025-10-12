@@ -91,10 +91,10 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems, updateQuan
         activeCategory={activeCategory}
         onCategoryClick={handleCategoryClick}
       />
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="text-center mb-12">
-        <h2 className="text-5xl font-krylic-elegant font-bold text-krylic-charcoal mb-6 krylic-underline">Our Products and Services</h2>
-        <p className="text-xl text-krylic-muted-blue max-w-4xl mx-auto font-krylic-serif leading-relaxed">
+      <main className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-8 sm:py-12">
+      <div className="text-center mb-8 sm:mb-12">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-krylic-elegant font-bold text-krylic-charcoal mb-4 sm:mb-6 krylic-underline">Our Products and Services</h2>
+        <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-krylic-muted-blue max-w-4xl mx-auto font-krylic-serif leading-relaxed px-2">
           Professional shoe cleaning, restoration, and care services with premium quality products. 
           From gentle maintenance to deep restoration, we bring your footwear back to life with meticulous attention to detail and advanced cleaning techniques.
         </p>
@@ -106,13 +106,13 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems, updateQuan
         if (categoryItems.length === 0) return null;
         
         return (
-          <section key={category.id} id={category.id} className="mb-16">
-            <div className="flex items-center mb-8">
-              <span className="text-4xl mr-4">{category.icon}</span>
-              <h3 className="text-4xl font-krylic-elegant font-semibold text-krylic-charcoal">{category.name}</h3>
+          <section key={category.id} id={category.id} className="mb-12 sm:mb-16">
+            <div className="flex items-center mb-6 sm:mb-8">
+              <span className="text-2xl sm:text-3xl lg:text-4xl mr-3 sm:mr-4">{category.icon}</span>
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-krylic-elegant font-semibold text-krylic-charcoal">{category.name}</h3>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {categoryItems.map((item) => {
                 const cartItem = cartItems.find(cartItem => cartItem.id === item.id);
                 return (
