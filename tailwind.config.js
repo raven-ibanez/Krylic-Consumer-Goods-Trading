@@ -4,6 +4,18 @@ export default {
   theme: {
     extend: {
       colors: {
+        krylic: {
+          yellow: '#FDF4C0',
+          lightYellow: '#FEF9E7',
+          mutedBlue: '#4A5568',
+          charcoal: '#2D3748',
+          darkBlue: '#1A202C',
+          gray: '#718096',
+          beige: '#E2D5C0',
+          lightBeige: '#F7F3F0',
+          accent: '#805AD5'
+        },
+        // Keep ramen colors for backward compatibility
         ramen: {
           red: '#D7263D',
           dark: '#0B0A0A',
@@ -17,6 +29,8 @@ export default {
         }
       },
       fontFamily: {
+        'krylic-serif': ['Georgia', 'Times New Roman', 'serif'],
+        'krylic-elegant': ['Playfair Display', 'Georgia', 'serif'],
         'pretendard': ['Pretendard', 'system-ui', 'sans-serif'],
         'noto-kr': ['Noto Serif KR', 'serif']
       },

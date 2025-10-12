@@ -16,6 +16,8 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
   onUpdateQuantity 
 }) => {
   const [showCustomization, setShowCustomization] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [pendingItem, setPendingItem] = useState<MenuItem | null>(null);
   const [selectedVariation, setSelectedVariation] = useState<Variation | undefined>(
     item.variations?.[0]
   );
@@ -37,8 +39,22 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
     if (item.variations?.length || item.addOns?.length) {
       setShowCustomization(true);
     } else {
-      onAddToCart(item, 1);
+      setPendingItem(item);
+      setShowConfirmModal(true);
     }
+  };
+
+  const handleConfirmAddToCart = () => {
+    if (pendingItem) {
+      onAddToCart(pendingItem, 1);
+      setShowConfirmModal(false);
+      setPendingItem(null);
+    }
+  };
+
+  const handleCancelAddToCart = () => {
+    setShowConfirmModal(false);
+    setPendingItem(null);
   };
 
   const handleCustomizedAddToCart = () => {
@@ -93,9 +109,9 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
 
   return (
     <>
-      <div className={`bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group animate-scale-in border border-gray-100 ${!item.available ? 'opacity-60' : ''}`}>
+      <div className={`bg-krylic-light-yellow rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group animate-scale-in border border-krylic-beige ${!item.available ? 'opacity-60' : ''}`}>
         {/* Image Container with Badges */}
-        <div className="relative h-48 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div className="relative h-48 bg-gradient-to-br from-krylic-yellow to-krylic-light-beige">
           {item.image ? (
             <img
               src={item.image}
@@ -110,32 +126,32 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
             />
           ) : null}
           <div className={`absolute inset-0 flex items-center justify-center ${item.image ? 'hidden' : ''}`}>
-            <div className="text-6xl opacity-20 text-gray-400">☕</div>
+            <div className="text-6xl opacity-20 text-krylic-muted-blue">🧽</div>
           </div>
           
           {/* Badges */}
           <div className="absolute top-3 left-3 flex flex-col gap-2">
             {item.isOnDiscount && item.discountPrice && (
-              <div className="bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg animate-pulse">
+              <div className="bg-gradient-to-r from-krylic-accent to-purple-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg animate-pulse">
                 SALE
               </div>
             )}
             {item.popular && (
-              <div className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+              <div className="bg-gradient-to-r from-krylic-charcoal to-krylic-muted-blue text-krylic-light-yellow text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
                 ⭐ POPULAR
               </div>
             )}
           </div>
           
           {!item.available && (
-            <div className="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+            <div className="absolute top-3 right-3 bg-krylic-accent text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
               UNAVAILABLE
             </div>
           )}
           
           {/* Discount Percentage Badge */}
           {item.isOnDiscount && item.discountPrice && (
-            <div className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm text-red-600 text-xs font-bold px-2 py-1 rounded-full shadow-lg">
+            <div className="absolute bottom-3 right-3 bg-krylic-light-yellow/90 backdrop-blur-sm text-krylic-accent text-xs font-bold px-2 py-1 rounded-full shadow-lg">
               {Math.round(((item.basePrice - item.discountPrice) / item.basePrice) * 100)}% OFF
             </div>
           )}
@@ -144,15 +160,15 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
         {/* Content */}
         <div className="p-5">
           <div className="flex items-start justify-between mb-3">
-            <h4 className="text-lg font-semibold text-gray-900 leading-tight flex-1 pr-2">{item.name}</h4>
+            <h4 className="text-lg font-krylic-serif font-semibold text-krylic-charcoal leading-tight flex-1 pr-2">{item.name}</h4>
             {item.variations && item.variations.length > 0 && (
-              <div className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full whitespace-nowrap">
+              <div className="text-xs text-krylic-muted-blue bg-krylic-beige px-2 py-1 rounded-full whitespace-nowrap">
                 {item.variations.length} sizes
               </div>
             )}
           </div>
           
-          <p className={`text-sm mb-4 leading-relaxed ${!item.available ? 'text-gray-400' : 'text-gray-600'}`}>
+          <p className={`text-sm mb-4 leading-relaxed font-krylic-serif ${!item.available ? 'text-krylic-muted-blue/60' : 'text-krylic-muted-blue'}`}>
             {!item.available ? 'Currently Unavailable' : item.description}
           </p>
           
@@ -162,25 +178,25 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
               {item.isOnDiscount && item.discountPrice ? (
                 <div className="space-y-1">
                   <div className="flex items-center space-x-2">
-                    <span className="text-2xl font-bold text-red-600">
+                    <span className="text-2xl font-bold text-krylic-accent">
                       ₱{item.discountPrice.toFixed(2)}
                     </span>
-                    <span className="text-sm text-gray-500 line-through">
+                    <span className="text-sm text-krylic-muted-blue line-through">
                       ₱{item.basePrice.toFixed(2)}
                     </span>
                   </div>
-                  <div className="text-xs text-gray-500">
+                  <div className="text-xs text-krylic-muted-blue">
                     Save ₱{(item.basePrice - item.discountPrice).toFixed(2)}
                   </div>
                 </div>
               ) : (
-                <div className="text-2xl font-bold text-gray-900">
+                <div className="text-2xl font-bold text-krylic-charcoal">
                   ₱{item.basePrice.toFixed(2)}
                 </div>
               )}
               
               {item.variations && item.variations.length > 0 && (
-                <div className="text-xs text-gray-500 mt-1">
+                <div className="text-xs text-krylic-muted-blue mt-1">
                   Starting price
                 </div>
               )}
@@ -191,31 +207,31 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
               {!item.available ? (
                 <button
                   disabled
-                  className="bg-gray-200 text-gray-500 px-4 py-2.5 rounded-xl cursor-not-allowed font-medium text-sm"
+                  className="bg-krylic-beige text-krylic-muted-blue px-4 py-2.5 rounded-xl cursor-not-allowed font-krylic-serif font-medium text-sm"
                 >
                   Unavailable
                 </button>
               ) : quantity === 0 ? (
                 <button
                   onClick={handleAddToCart}
-                  className="bg-gradient-to-r from-red-500 to-red-600 text-white px-6 py-2.5 rounded-xl hover:from-red-600 hover:to-red-700 transition-all duration-200 transform hover:scale-105 font-medium text-sm shadow-lg hover:shadow-xl"
+                  className="bg-krylic-charcoal text-white px-5 py-2.5 rounded-xl hover:bg-krylic-muted-blue transition-all duration-200 transform hover:scale-105 font-krylic-serif font-medium text-sm shadow-lg hover:shadow-xl border border-krylic-beige"
                 >
                   {item.variations?.length || item.addOns?.length ? 'Customize' : 'Add to Cart'}
                 </button>
               ) : (
-                <div className="flex items-center space-x-2 bg-gradient-to-r from-yellow-100 to-orange-100 rounded-xl p-1 border border-yellow-200">
+                <div className="flex items-center space-x-2 bg-krylic-yellow rounded-xl p-1 border border-krylic-beige shadow-sm">
                   <button
                     onClick={handleDecrement}
-                    className="p-2 hover:bg-yellow-200 rounded-lg transition-colors duration-200 hover:scale-110"
+                    className="p-2 hover:bg-krylic-beige rounded-lg transition-colors duration-200 hover:scale-110"
                   >
-                    <Minus className="h-4 w-4 text-gray-700" />
+                    <Minus className="h-4 w-4 text-krylic-charcoal" />
                   </button>
-                  <span className="font-bold text-gray-900 min-w-[28px] text-center text-sm">{quantity}</span>
+                  <span className="font-krylic-serif font-bold text-krylic-charcoal min-w-[28px] text-center text-sm">{quantity}</span>
                   <button
                     onClick={handleIncrement}
-                    className="p-2 hover:bg-yellow-200 rounded-lg transition-colors duration-200 hover:scale-110"
+                    className="p-2 hover:bg-krylic-beige rounded-lg transition-colors duration-200 hover:scale-110"
                   >
-                    <Plus className="h-4 w-4 text-gray-700" />
+                    <Plus className="h-4 w-4 text-krylic-charcoal" />
                   </button>
                 </div>
               )}
@@ -224,13 +240,71 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
 
           {/* Add-ons indicator */}
           {item.addOns && item.addOns.length > 0 && (
-            <div className="flex items-center space-x-1 text-xs text-gray-500 bg-gray-50 px-2 py-1 rounded-lg">
+            <div className="flex items-center space-x-1 text-xs text-krylic-muted-blue bg-krylic-beige px-2 py-1 rounded-lg">
               <span>+</span>
               <span>{item.addOns.length} add-on{item.addOns.length > 1 ? 's' : ''} available</span>
             </div>
           )}
         </div>
       </div>
+
+      {/* Add to Cart Confirmation Modal */}
+      {showConfirmModal && pendingItem && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-krylic-light-yellow rounded-2xl max-w-md w-full shadow-2xl border border-krylic-beige">
+            <div className="p-6">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-krylic-charcoal rounded-full flex items-center justify-center mr-4">
+                  <ShoppingCart className="h-6 w-6 text-krylic-light-yellow" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-krylic-elegant font-semibold text-krylic-charcoal">
+                    Add to Cart
+                  </h3>
+                  <p className="text-sm text-krylic-muted-blue">
+                    Confirm your selection
+                  </p>
+                </div>
+              </div>
+              
+              <div className="mb-6">
+                <div className="flex items-center space-x-3 p-4 bg-krylic-yellow/50 rounded-xl border border-krylic-beige">
+                  {pendingItem.image && (
+                    <img 
+                      src={pendingItem.image} 
+                      alt={pendingItem.name}
+                      className="w-16 h-16 object-cover rounded-lg"
+                    />
+                  )}
+                  <div className="flex-1">
+                    <h4 className="font-krylic-serif font-semibold text-krylic-charcoal">
+                      {pendingItem.name}
+                    </h4>
+                    <p className="text-sm text-krylic-muted-blue">
+                      ₱{pendingItem.basePrice.toFixed(2)}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex space-x-3">
+                <button
+                  onClick={handleCancelAddToCart}
+                  className="flex-1 bg-krylic-beige text-krylic-charcoal py-3 rounded-xl hover:bg-krylic-gray transition-all duration-200 font-krylic-serif font-medium"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleConfirmAddToCart}
+                  className="flex-1 bg-krylic-charcoal text-krylic-light-yellow py-3 rounded-xl hover:bg-krylic-muted-blue transition-all duration-200 font-krylic-serif font-medium shadow-lg hover:shadow-xl"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Customization Modal */}
       {showCustomization && (

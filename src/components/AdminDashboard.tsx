@@ -934,7 +934,7 @@ const AdminDashboard: React.FC = () => {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
               <Coffee className="h-8 w-8 text-black" />
-              <h1 className="text-2xl font-noto font-semibold text-black">ClickEats Admin</h1>
+              <h1 className="text-2xl font-noto font-semibold text-black">Krylic Admin</h1>
             </div>
             <div className="flex items-center space-x-4">
               <a
@@ -1016,14 +1016,14 @@ const AdminDashboard: React.FC = () => {
                 className="w-full flex items-center space-x-3 p-3 text-left hover:bg-gray-50 rounded-lg transition-colors duration-200"
               >
                 <Plus className="h-5 w-5 text-gray-400" />
-                <span className="font-medium text-gray-900">Add New Menu Item</span>
+                <span className="font-medium text-gray-900">Add New Product and Service Item</span>
               </button>
               <button
                 onClick={() => setCurrentView('items')}
                 className="w-full flex items-center space-x-3 p-3 text-left hover:bg-gray-50 rounded-lg transition-colors duration-200"
               >
                 <Package className="h-5 w-5 text-gray-400" />
-                <span className="font-medium text-gray-900">Manage Menu Items</span>
+                <span className="font-medium text-gray-900">Manage Products and Services Items</span>
               </button>
               <button
                 onClick={() => setCurrentView('categories')}

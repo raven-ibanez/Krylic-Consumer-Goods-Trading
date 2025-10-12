@@ -2,8 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Ramen Yard Custom Styles */
-/* Minimal helpers for ramen palette when needed outside tailwind tokens */
+/* Krylic Brand Custom Styles */
+/* Logo-inspired color palette and decorative elements */
+.bg-krylic-yellow { background-color: #FDF4C0; }
+.bg-krylic-light-yellow { background-color: #FEF9E7; }
+.text-krylic-muted-blue { color: #4A5568; }
+.text-krylic-charcoal { color: #2D3748; }
+.border-krylic-beige { border-color: #E2D5C0; }
+.ring-krylic-accent { --tw-ring-color: #805AD5; }
+
+/* Wave decorative elements inspired by logo */
+.krylic-wave {
+  position: relative;
+  overflow: hidden;
+}
+
+.krylic-wave::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(45deg, #E2D5C0 0%, #F7F3F0 50%, #E2D5C0 100%);
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+
+.krylic-wave-bottom {
+  position: relative;
+  overflow: hidden;
+}
+
+.krylic-wave-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(-45deg, #E2D5C0 0%, #F7F3F0 50%, #E2D5C0 100%);
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
+/* Curved underline decoration */
+.krylic-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.krylic-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #E2D5C0, transparent);
+  border-radius: 1px;
+}
+
+/* Keep ramen styles for backward compatibility */
 .bg-ramen-cream { background-color: #FFF3E0; }
 .bg-ramen-beige { background-color: #F7E7CE; }
 .text-ramen-red { color: #D7263D; }
