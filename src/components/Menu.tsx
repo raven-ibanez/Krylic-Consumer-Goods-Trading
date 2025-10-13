@@ -2,7 +2,6 @@ import React from 'react';
 import { MenuItem, CartItem } from '../types';
 import { useCategories } from '../hooks/useCategories';
 import MenuItemCard from './MenuItemCard';
-import MobileNav from './MobileNav';
 
 // Preload images for better performance
 const preloadImages = (items: MenuItem[]) => {
@@ -35,12 +34,7 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems, updateQuan
 
 
   return (
-    <>
-      <MobileNav 
-        activeCategory="all"
-        onCategoryClick={() => {}}
-      />
-      <main className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-8 sm:py-12">
+    <main className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-8 sm:py-12">
       <div className="text-center mb-8 sm:mb-12">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-krylic-elegant font-bold text-krylic-charcoal mb-4 sm:mb-6 krylic-underline">Our Products and Services</h2>
         <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-krylic-muted-blue max-w-4xl mx-auto font-krylic-serif leading-relaxed px-2">
@@ -56,11 +50,6 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems, updateQuan
         
         return (
           <section key={category.id} id={category.id} className="mb-12 sm:mb-16">
-            <div className="flex items-center mb-6 sm:mb-8">
-              <span className="text-2xl sm:text-3xl lg:text-4xl mr-3 sm:mr-4">{category.icon}</span>
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-krylic-elegant font-semibold text-krylic-charcoal">{category.name}</h3>
-            </div>
-            
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {categoryItems.map((item) => {
                 const cartItem = cartItems.find(cartItem => cartItem.id === item.id);
@@ -78,8 +67,7 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems, updateQuan
           </section>
         );
       })}
-      </main>
-    </>
+    </main>
   );
 };
 

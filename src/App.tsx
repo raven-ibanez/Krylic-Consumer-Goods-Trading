@@ -43,7 +43,7 @@ function MainApp() {
   };
 
   // Don't filter menu items here - let Menu component handle its own filtering
-  // The SubNav is just for navigation, Menu component shows all items organized by category
+  // Menu component shows all items organized by category
 
   return (
     <div className="min-h-screen bg-krylic-light-yellow font-krylic-serif">
