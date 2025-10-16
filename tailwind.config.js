@@ -5,15 +5,26 @@ export default {
     extend: {
       colors: {
         krylic: {
-          yellow: '#FDF4C0',
-          lightYellow: '#FEF9E7',
-          mutedBlue: '#4A5568',
-          charcoal: '#2D3748',
-          darkBlue: '#1A202C',
-          gray: '#718096',
-          beige: '#E2D5C0',
-          lightBeige: '#F7F3F0',
-          accent: '#805AD5'
+          // Elegant and sophisticated color palette
+          primary: '#F8F9FA',      // Clean white for main backgrounds
+          primaryDark: '#E9ECEF',  // Light gray for subtle backgrounds
+          primaryLight: '#FFFFFF', // Pure white for cards
+          secondary: '#212529',    // Rich dark gray instead of pure black
+          secondaryLight: '#495057', // Medium gray for secondary elements
+          accent: '#FFC107',       // Warm golden yellow for highlights
+          accentDark: '#E0A800',   // Darker gold for hover states
+          accentLight: '#FFF3CD',  // Very light yellow for subtle accents
+          text: '#212529',         // Rich dark gray for primary text
+          textLight: '#6C757D',    // Medium gray for secondary text
+          textWhite: '#FFFFFF',    // White text for contrast
+          surface: '#FFFFFF',      // Clean white for cards
+          surfaceLight: '#F8F9FA', // Very light gray for subtle surfaces
+          border: '#DEE2E6',       // Light gray borders
+          borderDark: '#ADB5BD',   // Medium gray borders for emphasis
+          borderLight: '#E9ECEF',  // Very light gray borders
+          success: '#198754',      // Professional green for success
+          warning: '#FD7E14',      // Warm orange for warnings
+          error: '#DC3545'         // Professional red for errors
         },
         // Keep ramen colors for backward compatibility
         ramen: {

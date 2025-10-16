@@ -36,8 +36,8 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems, updateQuan
   return (
     <main className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-8 sm:py-12">
       <div className="text-center mb-8 sm:mb-12">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-krylic-elegant font-bold text-krylic-charcoal mb-4 sm:mb-6 krylic-underline">Our Products and Services</h2>
-        <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-krylic-muted-blue max-w-4xl mx-auto font-krylic-serif leading-relaxed px-2">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-krylic-elegant font-bold text-krylic-text mb-4 sm:mb-6 krylic-underline">Our Products and Services</h2>
+        <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-krylic-text max-w-4xl mx-auto font-krylic-serif leading-relaxed px-2">
           Professional shoe cleaning, restoration, and care services with premium quality products. 
           From gentle maintenance to deep restoration, we bring your footwear back to life with meticulous attention to detail and advanced cleaning techniques.
         </p>

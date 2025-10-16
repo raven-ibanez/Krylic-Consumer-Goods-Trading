@@ -3,15 +3,33 @@
 @tailwind utilities;
 
 /* Krylic Brand Custom Styles */
-/* Logo-inspired color palette and decorative elements */
-.bg-krylic-yellow { background-color: #FDF4C0; }
-.bg-krylic-light-yellow { background-color: #FEF9E7; }
-.text-krylic-muted-blue { color: #4A5568; }
-.text-krylic-charcoal { color: #2D3748; }
-.border-krylic-beige { border-color: #E2D5C0; }
-.ring-krylic-accent { --tw-ring-color: #805AD5; }
+/* Elegant and sophisticated color palette */
+.bg-krylic-primary { background-color: #F8F9FA; }
+.bg-krylic-primary-dark { background-color: #E9ECEF; }
+.bg-krylic-primary-light { background-color: #FFFFFF; }
+.bg-krylic-secondary { background-color: #212529; }
+.bg-krylic-secondary-light { background-color: #495057; }
+.bg-krylic-accent { background-color: #FFC107; }
+.bg-krylic-accent-dark { background-color: #E0A800; }
+.bg-krylic-accent-light { background-color: #FFF3CD; }
+.text-krylic-text { color: #212529; }
+.text-krylic-text-light { color: #6C757D; }
+.text-krylic-text-white { color: #FFFFFF; }
+.border-krylic-border { border-color: #DEE2E6; }
+.border-krylic-border-dark { border-color: #ADB5BD; }
+.border-krylic-border-light { border-color: #E9ECEF; }
+.ring-krylic-accent { --tw-ring-color: #FFC107; }
 
-/* Wave decorative elements inspired by logo */
+/* Backward compatibility aliases */
+.bg-krylic-yellow { background-color: #FFC107; }
+.bg-krylic-light-yellow { background-color: #FFF3CD; }
+.bg-krylic-bright-yellow { background-color: #FFF3CD; }
+.text-krylic-charcoal { color: #212529; }
+.text-krylic-gray { color: #6C757D; }
+.border-krylic-charcoal { border-color: #ADB5BD; }
+.border-krylic-yellow { border-color: #FFC107; }
+
+/* Wave decorative elements with elegant colors */
 .krylic-wave {
   position: relative;
   overflow: hidden;
@@ -24,7 +42,7 @@
   left: 0;
   right: 0;
   height: 20px;
-  background: linear-gradient(45deg, #E2D5C0 0%, #F7F3F0 50%, #E2D5C0 100%);
+  background: linear-gradient(45deg, #FFC107 0%, #FFF3CD 50%, #FFC107 100%);
   clip-path: polygon(0 100%, 100% 0, 100% 100%);
 }
 
@@ -40,7 +58,7 @@
   left: 0;
   right: 0;
   height: 20px;
-  background: linear-gradient(-45deg, #E2D5C0 0%, #F7F3F0 50%, #E2D5C0 100%);
+  background: linear-gradient(-45deg, #FFC107 0%, #FFF3CD 50%, #FFC107 100%);
   clip-path: polygon(0 0, 100% 100%, 0 100%);
 }
 
@@ -57,8 +75,8 @@
   left: 50%;
   transform: translateX(-50%);
   width: 80%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #E2D5C0, transparent);
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #FFC107, transparent);
   border-radius: 1px;
 }
 

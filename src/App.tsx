@@ -46,7 +46,7 @@ function MainApp() {
   // Menu component shows all items organized by category
 
   return (
-    <div className="min-h-screen bg-krylic-light-yellow font-krylic-serif">
+    <div className="min-h-screen bg-krylic-primary font-krylic-serif">
       <Header 
         cartItemsCount={cart.getTotalItems()}
         onCartClick={() => handleViewChange('cart')}
