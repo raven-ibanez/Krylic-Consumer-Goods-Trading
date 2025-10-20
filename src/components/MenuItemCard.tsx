@@ -214,7 +214,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
               ) : quantity === 0 ? (
                 <button
                   onClick={handleAddToCart}
-                  className="bg-krylic-accent text-krylic-secondary px-5 py-2.5 rounded-xl hover:bg-krylic-accent-dark transition-all duration-200 transform hover:scale-105 font-krylic-serif font-medium text-sm shadow-lg hover:shadow-xl border border-krylic-accent"
+                  className="bg-krylic-accent text-white px-5 py-2.5 rounded-xl hover:bg-krylic-accent-dark transition-all duration-200 transform hover:scale-105 font-krylic-serif font-medium text-sm shadow-lg hover:shadow-xl border border-krylic-accent"
                 >
                   {item.variations?.length || item.addOns?.length ? 'Customize' : 'Add to Cart'}
                 </button>
@@ -296,7 +296,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
                 </button>
                 <button
                   onClick={handleConfirmAddToCart}
-                  className="flex-1 bg-krylic-secondary text-krylic-primary-light py-3 rounded-xl hover:bg-krylic-secondary-light transition-all duration-200 font-krylic-serif font-medium shadow-lg hover:shadow-xl border border-krylic-secondary"
+                  className="flex-1 bg-krylic-secondary text-white py-3 rounded-xl hover:bg-krylic-secondary-light transition-all duration-200 font-krylic-serif font-medium shadow-lg hover:shadow-xl border border-krylic-secondary"
                 >
                   Add to Cart
                 </button>
@@ -435,7 +435,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
 
               <button
                 onClick={handleCustomizedAddToCart}
-                className="w-full bg-gradient-to-r from-krylic-accent to-krylic-accent-dark text-krylic-secondary py-4 rounded-xl hover:from-krylic-accent-dark hover:to-krylic-accent transition-all duration-200 font-semibold flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105 border border-krylic-accent"
+                className="w-full bg-gradient-to-r from-krylic-accent to-krylic-accent-dark text-white py-4 rounded-xl hover:from-krylic-accent-dark hover:to-krylic-accent transition-all duration-200 font-semibold flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105 border border-krylic-accent"
               >
                 <ShoppingCart className="h-5 w-5" />
                 <span>Add to Cart - ₱{calculatePrice().toFixed(2)}</span>

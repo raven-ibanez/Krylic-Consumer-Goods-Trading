@@ -44,6 +44,7 @@ export interface OrderData {
   items: CartItem[];
   customerName: string;
   contactNumber: string;
+  branch?: string;
   serviceType: 'dine-in' | 'pickup' | 'delivery';
   address?: string;
   pickupTime?: string;

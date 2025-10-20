@@ -14,6 +14,7 @@ const Checkout: React.FC<CheckoutProps> = ({ cartItems, totalPrice, onBack }) =>
   const [step, setStep] = useState<'details' | 'payment'>('details');
   const [customerName, setCustomerName] = useState('');
   const [contactNumber, setContactNumber] = useState('');
+  const [branch, setBranch] = useState('');
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('gcash');
 
   React.useEffect(() => {
@@ -39,6 +40,7 @@ const Checkout: React.FC<CheckoutProps> = ({ cartItems, totalPrice, onBack }) =>
 
 👤 Customer: ${customerName}
 📞 Contact: ${contactNumber}
+🏢 Branch: ${branch}
 
 📋 ORDER DETAILS:
 ${cartItems.map(item => {
@@ -72,7 +74,7 @@ Please confirm this order to proceed. Thank you for choosing Krylic! 🧽
     
   };
 
-  const isDetailsValid = customerName && contactNumber;
+  const isDetailsValid = customerName && contactNumber && branch;
 
   if (step === 'details') {
     return (
@@ -147,6 +149,18 @@ Please confirm this order to proceed. Thank you for choosing Krylic! 🧽
                   onChange={(e) => setContactNumber(e.target.value)}
                   className="w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200"
                   placeholder="09XX XXX XXXX"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-black mb-2">Branch *</label>
+                <input
+                  type="text"
+                  value={branch}
+                  onChange={(e) => setBranch(e.target.value)}
+                  className="w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200"
+                  placeholder="Enter branch name (e.g., Downtown)"
                   required
                 />
               </div>
@@ -251,6 +265,7 @@ Please confirm this order to proceed. Thank you for choosing Krylic! 🧽
               <h4 className="font-medium text-black mb-2">Customer Details</h4>
               <p className="text-sm text-gray-600">Name: {customerName}</p>
               <p className="text-sm text-gray-600">Contact: {contactNumber}</p>
+              <p className="text-sm text-gray-600">Branch: {branch}</p>
             </div>
 
             {cartItems.map((item) => (
